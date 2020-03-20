@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { useDebouncedCallback } from 'use-debounce';
+import PropTypes from 'prop-types'
 
-import RemoveIcon from '../../common/svg/RemoveIcon'
+import Field from './Field'
 import Spinner from '../../common/Spinner'
 import Dialog from '../../common/Dialog'
 import Results from './Results'
@@ -48,34 +49,11 @@ export default function Search(props) {
   const { bookData, loadingData } = props
   return (
     <div className="autocomplete">
-      <div className="inputWrapper">
-        <div className="inputInnerWrapper">
-          <label htmlFor="searchField">Search Books by title</label>
-          <input
-            type="text"
-            value={fieldValue}
-            id="searchField"
-            onChange={e => handleValueChange(e.target.value)}
-            placeholder='Search Books by title'
-          />
-        
-        <button
-          className="clearField"
-          type="button"
-          onClick={() => RemoveFieldData()}
-        >
-          <span>Clear field</span>
-          <RemoveIcon />
-        </button>
-        </div>
-        <button
-          className="search"
-          type="button"
-          onClick={() => handleValueChange(fieldValue)}
-        >
-          Search
-        </button>
-      </div>
+      <Field
+        fieldValue={fieldValue}
+        handleValueChange={handleValueChange}
+        RemoveFieldData={RemoveFieldData}
+      />
       {(isListOpen || loadingData) && (
         <div
           className='results'
@@ -92,7 +70,7 @@ export default function Search(props) {
       )}
       {isDialogOpen && (
         <Dialog closeDialog={closeDialog} >
-          <div class="innerContent">
+          <div className="innerContent">
             <div className="leftWpr">
               <img 
                 src={'http://covers.openlibrary.org/b/id/'+selectedBook.cover_i+'-L.jpg'} 
@@ -110,3 +88,8 @@ export default function Search(props) {
     </div>
   )
 }
+Search.propTypes = {
+  bookData: PropTypes.object,
+  loadingData: PropTypes.bool
+}
+

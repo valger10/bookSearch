@@ -1,13 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function Results(props) {
   const { bookData, openDialog } = props
   return(
     <ul>
-    {bookData.docs &&
+      {bookData.docs &&
       bookData.docs.map(val => {
         return (
-          <li key={val.created} className='wpr'>
+          <li 
+            className='wpr'
+            key={val.key}
+          >
             <button
               onClick={() => openDialog(val)}
             >
@@ -31,4 +35,8 @@ export default function Results(props) {
       )}
     </ul>
   )
+}
+Results.propTypes = {
+  bookData: PropTypes.object,
+  openDialog: PropTypes.func
 }

@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   showLoading: false,
-      bookData: [],
+      bookData: {},
 }
 
 export default (state = initialState, action) => {
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
     case CLEAR_SEARCH_DATA:
       return {
         ...state,
-        bookData: false,
+        bookData: {},
         showLoading: false,
       }
     default:
