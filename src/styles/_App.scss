@@ -1,0 +1,19 @@
+html {
+  font-size: 62.5%;
+  body {
+    font-family: Sans-Serif;
+    font-size: 1.6rem;
+    background: #faf9f8;
+    .app {
+      text-align: left;
+      width: 100%;
+      max-width: 70rem;
+      margin: auto;
+      padding-bottom: 4rem;
+    }
+    h1 {
+      text-align: center;
+      padding-top: 2rem;
+    }
+  }
+}
